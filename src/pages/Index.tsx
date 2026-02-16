@@ -31,15 +31,21 @@ const projects = [
 
 const techStack = [
   { name: "React", icon: "⚛️" },
-  { name: "TypeScript", icon: "🔷" },
-  { name: "JavaScript", icon: "🟨" },
-  { name: "Tailwind CSS", icon: "🎨" },
+  { name: "React Native", icon: "📱" },
   { name: "Next.js", icon: "▲" },
-  { name: "Node.js", icon: "🟢" },
-  { name: "Git", icon: "🔀" },
-  { name: "Figma", icon: "🎯" },
+  { name: "JavaScript", icon: "🟨" },
+  { name: "TypeScript", icon: "🔷" },
+  { name: "Tailwind CSS", icon: "🎨" },
+  { name: "Alpine.js", icon: "🏔️" },
+  { name: "PHP", icon: "🐘" },
+  { name: "Laravel", icon: "🔶" },
+  { name: "Filament", icon: "🛠️" },
+  { name: "MySQL", icon: "🗄️" },
   { name: "REST APIs", icon: "🔗" },
-  { name: "Framer Motion", icon: "✨" },
+  { name: "Git", icon: "🔀" },
+  { name: "GitLab", icon: "🦊" },
+  { name: "CI/CD", icon: "🚀" },
+  { name: "GitHub", icon: "🐙" },
 ];
 
 const rotatingWords = ["impressionam", "encantam", "convertem", "se destacam", "funcionam"];
