@@ -96,7 +96,7 @@ const Index = () => {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-xl border-b border-border/50">
         <div className="container mx-auto flex items-center justify-between py-4 px-6">
-          <span className="font-heading text-primary text-lg font-bold tracking-tight">{"<dev />"}</span>
+          <span className="font-heading text-primary text-lg font-bold tracking-tight">{"gustavo.dev"}</span>
           <div className="flex items-center gap-8">
             <a href="#projetos" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-medium">Projetos</a>
             <a href="#sobre" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-medium">Sobre</a>
@@ -128,21 +128,25 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
+            className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-2"
           >
-            Eu construo{" "}
-            <span className="text-gradient">interfaces</span>
-            <br />
-            que <TypingWord />
+            Gustavo Santos
           </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="font-heading text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-6"
+          >
+            Desenvolvedor <span className="text-gradient">Front-End</span>
+          </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 leading-relaxed"
           >
-            Desenvolvedor Front-End apaixonado por criar experiências web modernas, 
-            performáticas e visualmente marcantes.
+            Crio interfaces modernas e funcionais com foco em performance e organização de código.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -276,11 +280,11 @@ const Index = () => {
               {"// contato"}
             </motion.p>
             <motion.h2 variants={fadeUp} custom={1} className="font-heading text-3xl md:text-4xl font-bold mb-4">
-              Vamos trabalhar juntos?
+              Disponível para novas oportunidades
             </motion.h2>
             <motion.p variants={fadeUp} custom={2} className="text-muted-foreground mb-10 max-w-lg leading-relaxed">
-              Estou disponível para novos projetos e oportunidades. 
-              Entre em contato por qualquer um dos canais abaixo.
+              Atualmente aberto a oportunidades como Desenvolvedor Front-End.
+              <br />Entre em contato para conversarmos.
             </motion.p>
             <motion.div variants={fadeUp} custom={3} className="flex gap-4 flex-wrap">
               {[
@@ -306,9 +310,9 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="border-t border-border/50 py-8 px-6">
-        <div className="container mx-auto max-w-5xl flex items-center justify-between">
-          <span className="font-heading text-primary text-sm font-bold">{"<dev />"}</span>
-          <span className="text-xs text-muted-foreground">© 2026 · Todos os direitos reservados</span>
+        <div className="container mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-2">
+          <span className="text-xs text-muted-foreground">© 2026 Gustavo Santos</span>
+          <span className="text-xs text-muted-foreground">Desenvolvido com <span className="text-primary">React</span> e <span className="text-primary">Tailwind</span>.</span>
         </div>
       </footer>
     </div>
