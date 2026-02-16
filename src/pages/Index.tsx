@@ -1,6 +1,7 @@
 import { motion, type Variants, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Mail, ExternalLink, ArrowDown } from "lucide-react";
 import { useState, useEffect } from "react";
+import GsLogo from "@/components/GsLogo";
 
 const projects = [
   {
@@ -102,7 +103,7 @@ const Index = () => {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-xl border-b border-border/50">
         <div className="container mx-auto flex items-center justify-between py-4 px-6">
-          <span className="font-heading text-primary text-lg font-bold tracking-tight">{"gustavo.dev"}</span>
+          <GsLogo className="h-8 w-auto text-foreground" />
           <div className="flex items-center gap-8">
             <a href="#projetos" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-medium">Projetos</a>
             <a href="#sobre" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 font-medium">Sobre</a>
