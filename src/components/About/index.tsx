@@ -4,26 +4,24 @@ import { TechCard } from "@/components/About/TechCard";
 import type { Tech } from "@/types/tech";
 import { fadeUp } from "@/lib/animations";
 
-
 const techStack: Tech[] = [
-    { name: "React", icon: "⚛️" },
-    { name: "React Native", icon: "📱" },
-    { name: "Next.js", icon: "▲" },
-    { name: "JavaScript", icon: "🟨" },
-    { name: "TypeScript", icon: "🔷" },
-    { name: "Tailwind CSS", icon: "🎨" },
-    { name: "Alpine.js", icon: "🏔️" },
-    { name: "PHP", icon: "🐘" },
-    { name: "Laravel", icon: "🔶" },
-    { name: "Filament", icon: "🛠️" },
-    { name: "MySQL", icon: "🗄️" },
-    { name: "REST APIs", icon: "🔗" },
-    { name: "Git", icon: "🔀" },
-    { name: "GitLab", icon: "🦊" },
-    { name: "CI/CD", icon: "🚀" },
-    { name: "GitHub", icon: "🐙" },
-];
+  { name: "React", icon: "⚛️" },
+  { name: "Next.js", icon: "▲" },
+  { name: "TypeScript", icon: "🔷" },
+  { name: "JavaScript", icon: "🟨" },
+  { name: "Tailwind CSS", icon: "🎨" },
+  { name: "React Native", icon: "📱" },
 
+  { name: "PHP", icon: "🐘" },
+  { name: "Laravel", icon: "🔶" },
+  { name: "Filament", icon: "🛠️" },
+  { name: "MySQL", icon: "🗄️" },
+
+  { name: "Git", icon: "🔀" },
+  { name: "Zod", icon: "✅" },
+  { name: "React Hook Form", icon: "📝" },
+  { name: "REST APIs", icon: "🔗" },
+];
 
 export const About = () => {
     return (
@@ -37,7 +35,7 @@ export const About = () => {
                     <motion.p variants={fadeUp} custom={0} className="font-heading text-primary text-sm mb-2 tracking-wider">
                     </motion.p>
                     <motion.h2 variants={fadeUp} custom={1} className="font-heading text-3xl md:text-4xl font-bold mb-10">
-                        Tech Stack
+                      Ferramentas & Stack
                     </motion.h2>
                     <motion.div variants={fadeUp} custom={2} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                         {techStack.map((tech) => (

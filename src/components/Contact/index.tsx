@@ -1,12 +1,29 @@
 import { motion, type Variants } from "framer-motion";
-import { Mail } from "lucide-react";
 import { ContactButton } from "../ui/contactButton";
 import { fadeUp } from "@/lib/animations";
+import { Mail, Github, Linkedin, MessageCircle } from "lucide-react";
 
 const links = [
-    { href: "mailto:seuemail@email.com", icon: Mail, label: "Email" },
-    { href: "https://github.com", icon: Mail, label: "GitHub" },
-    { href: "https://linkedin.com", icon: Mail, label: "LinkedIn" },
+  {
+    href: "mailto:s.rodrigues.2050@hotmail.com",
+    icon: Mail,
+    label: "Email",
+  },
+  {
+    href: "https://github.com/GustavoSantosRodrigues",
+    icon: Github,
+    label: "GitHub",
+  },
+  {
+    href: "https://www.linkedin.com/in/gustavo-santos-rodrigues-55a13a201/",
+    icon: Linkedin,
+    label: "LinkedIn",
+  },
+  {
+    href: "https://wa.me/5511916654474?text=Olá!%20Gostaria%20de%20falar%20com%20você.",
+    icon: MessageCircle,
+    label: "WhatsApp",
+  },
 ];
 
 
