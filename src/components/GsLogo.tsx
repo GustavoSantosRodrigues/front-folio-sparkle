@@ -13,7 +13,7 @@ const GsLogo = ({ className = "" }: { className?: string }) => (
       fontSize="28"
       fill="currentColor"
     >
-      GS
+      GR
     </text>
   </svg>
 );

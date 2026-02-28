@@ -42,7 +42,7 @@ export const Projects = () => {
               href="https://github.com/GustavoSantosRodrigues/corporate-site-nextjs"
               target="_blank"
               rel="noreferrer"
-              className="mt-3 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+              className="mt-3 inline-flex items-center gap-2 text-sm text-white hover:text-primary transition-colors"
             >
               <Github className="w-4 h-4" />
               Ver código no GitHub

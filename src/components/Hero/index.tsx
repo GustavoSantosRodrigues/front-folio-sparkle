@@ -25,15 +25,33 @@ export const Hero = () => {
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-2"
                 >
-                    Gustavo Santos
+                    Gustavo Rodrigues
                 </motion.h1>
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
-                    className="font-heading text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-6"
+                    className="text-lg md:text-xl text-muted-foreground mb-2"
                 >
-                    Desenvolvedor <span className="text-gradient">Front-End</span>
+                    Front-end Developer • React • Next.js • TypeScript
+                </motion.p>
+
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="text-sm md:text-base text-primary font-medium mb-6"
+                >
+                    +2 anos de experiência • Sistemas reais em produção
+                </motion.p>
+
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="text-sm md:text-base text-white text-muted-foreground mb-3 leading-relaxed"
+                >
+                    Plus: Laravel • Filament • MySQL • APIs REST
                 </motion.p>
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
