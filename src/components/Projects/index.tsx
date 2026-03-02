@@ -1,7 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/animations";
-import { Github, Image as ImageIcon, ExternalLink, X, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Github,
+  Image as ImageIcon,
+  ExternalLink,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Hammer, 
+} from "lucide-react";
 
 type Project = {
   title: string;
@@ -10,7 +18,13 @@ type Project = {
   demoUrl?: string;
   repoUrl?: string;
   isRepoPrivate?: boolean;
-  screenshots?: string[];
+  status?: "done" | "dev";
+  statusText?: string;
+
+  screenshots?: {
+    src: string;
+    caption: string;
+  }[];
 };
 
 const projects: Project[] = [
@@ -21,18 +35,51 @@ const projects: Project[] = [
     demoUrl: "https://corporate-site-nextjs-two.vercel.app",
     repoUrl: "https://github.com/GustavoSantosRodrigues/corporate-site-nextjs",
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "App Router"],
+    status: "done",
   },
   {
-    title: "Sistema X — Painel Admin (Laravel + Filament)",
+    title:
+      "Sistema web completo desenvolvido com Laravel e painel administrativo em Filament",
     description:
-      "Painel administrativo com autenticação, CRUDs e relatórios. Projeto de cliente/sistema interno.",
+      "Sistema web dinâmico com gerenciamento completo de conteúdo via painel administrativo, abrangendo páginas, produtos, marcas, mapas e menus de navegação... Permite criação, edição e organização das informações sem necessidade de deploy ou alterações no código, com autenticação, CRUDs estruturados e armazenamento em banco MySQL. Projeto interno de cliente desenvolvido com foco em usabilidade, escalabilidade e autonomia para gestão de conteúdo.",
     isRepoPrivate: true,
+    tags: ["Laravel", "Filament", "PHP", "MySQL", "Tailwind CSS"],
+    status: "done",
     screenshots: [
-      "/projects/laravel-1.png",
-      "/projects/laravel-2.png",
-      "/projects/laravel-3.png",
+      { src: "/home-desktop.png", caption: "Tela Home Desktop" },
+      { src: "/home-mobile.png", caption: "Tela Home Mobile" },
+      { src: "/home-painel.png", caption: "Painel Administrador Filament Home" },
+      { src: "/produtos-desktop.png", caption: "Tela Desktop Cadastramento de Produtos" },
+      { src: "/produtos-mobile.png", caption: "Tela Mobile Cadastramento de Produtos" },
+      { src: "/painel-listagem.png", caption: "Painel Administrador Filament - Listagem de Produtos" },
+      { src: "/painel-produtos-cadastro.png", caption: "Painel Administrador Filament - Cadastro de Produtos" },
+      { src: "/marcas.png", caption: "Tela Desktop Marcas" },
+      { src: "/marcas-mobile.png", caption: "Tela Mobile Marcas" },
+      { src: "/marcas-painel.png", caption: "Painel Administrador Filament Marcas" },
+      { src: "/single-marcas.png", caption: "Tela Desktop Single Marca" },
+      { src: "/single-marcas-mobile.png", caption: "Tela Mobile Single Marca" },
+      { src: "/single-marcas-painel.png", caption: "Painel Administrador Filament Single Marca" },
+      { src: "/mapa-desktop.png", caption: "Tela Desktop Mapas" },
+      { src: "/mapa-mobile.png", caption: "Tela Mobile Mapas" },
+      { src: "/mapa-listagem.png", caption: "Painel Administrador Filament Listagem" },
+      { src: "/mapa-registrar.png", caption: "Painel Administrador Filament Adicionar" },
     ],
-    tags: ["Laravel", "Filament", "PHP", "MySQL"],
+  },
+  {
+    title: "Sistema de Gestão de Treinos — Full-stack (Node.js + Next.js)",
+    description:
+      "Aplicação full-stack moderna em desenvolvimento para gestão de treinos personalizados, construída do zero ao deploy utilizando Node.js, Fastify, TypeScript, Next.js e Docker. O sistema incluirá onboarding com IA, criação de planos de treino, monitoramento de progresso e dashboard de resultados.",
+    isRepoPrivate: true,
+    tags: ["Node.js", "Fastify", "TypeScript", "Next.js", "Docker", "Full-stack"],
+    status: "dev",
+    statusText: "Em desenvolvimento (MVP)",
+
+    screenshots: [
+      { src: "/mobile-home-academia.avif", caption: "Tela Mobile Home Academia" },
+      { src: "/mobile-ia-chat-academia.avif", caption: "Tela Mobile IA Chat Academia" },
+      { src: "/mobile-treino-semana-academia.avif", caption: "Tela Mobile Treino da Semana Academia" },
+      { src: "/mobile-dias-treino-academia.avif", caption: "Tela Mobile Dias do Treino Academia" },
+    ],
   },
 ];
 
@@ -40,10 +87,25 @@ export const Projects = () => {
   const [open, setOpen] = useState<null | Project>(null);
   const [slide, setSlide] = useState(0);
 
+  const [zoom, setZoom] = useState(1);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [dragging, setDragging] = useState(false);
+
   const close = () => {
     setOpen(null);
     setSlide(0);
+    setZoom(1);
+    setPos({ x: 0, y: 0 });
   };
+
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
 
   const next = () => {
     if (!open?.screenshots?.length) return;
@@ -75,24 +137,42 @@ export const Projects = () => {
               custom={i}
               className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-7 hover:border-primary/40 transition-all duration-300"
             >
-              <div className="flex items-start justify-between mb-4">
+              <div className="flex items-start justify-between mb-4 gap-3">
                 <h3 className="font-heading text-lg font-semibold">{p.title}</h3>
-                {p.demoUrl && (
-                  <ExternalLink className="w-4 h-4 text-muted-foreground" />
-                )}
+
+                <div className="flex items-center gap-2 shrink-0">
+                  {p.status === "dev" && (
+                    <span className="inline-flex items-center gap-1 text-[11px] font-heading bg-blue-500/15 text-blue-300 px-2.5 py-1 rounded-md border border-blue-500/20">
+                      <Hammer className="w-3.5 h-3.5" />
+                      Em dev
+                    </span>
+                  )}
+
+                  {p.demoUrl && <ExternalLink className="w-4 h-4 text-muted-foreground" />}
+                </div>
               </div>
 
               <p className="text-sm text-muted-foreground mb-5 leading-relaxed">{p.description}</p>
 
               <div className="flex flex-wrap gap-2 mb-6">
                 {p.tags.map((tag) => (
-                  <span key={tag} className="text-xs font-heading bg-secondary/80 text-secondary-foreground px-3 py-1 rounded-md">
+                  <span
+                    key={tag}
+                    className="text-xs font-heading bg-secondary/80 text-secondary-foreground px-3 py-1 rounded-md"
+                  >
                     {tag}
                   </span>
                 ))}
+
                 {p.isRepoPrivate && (
                   <span className="text-xs font-heading bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded-md">
                     Código privado
+                  </span>
+                )}
+
+                {p.status === "dev" && p.statusText && (
+                  <span className="text-xs font-heading bg-blue-500/10 text-blue-200 px-3 py-1 rounded-md border border-blue-500/20">
+                    {p.statusText}
                   </span>
                 )}
               </div>
@@ -138,21 +218,24 @@ export const Projects = () => {
         </div>
       </div>
 
-      {/* MODAL (Swiper simples) */}
       {open && (
         <div
-          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4"
           onClick={close}
         >
           <div
-            className="w-full max-w-4xl bg-card border border-border rounded-2xl overflow-hidden"
+            className="w-full max-w-3xl bg-card border border-border rounded-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between p-4 border-b border-border">
-              <div>
-                <p className="font-heading font-semibold">{open.title}</p>
-                <p className="text-xs text-muted-foreground">
-                  Demo indisponível: projeto interno/cliente (prints abaixo).
+            <div className="flex items-center justify-between p-3 sm:p-4 border-b border-border">
+              <div className="min-w-0">
+                <p className="font-heading font-semibold truncate">{open.title}</p>
+
+                {/* ✅ texto do modal muda conforme status */}
+                <p className="text-xs text-muted-foreground truncate">
+                  {open.status === "dev"
+                    ? "Em desenvolvimento — prints do protótipo abaixo."
+                    : "Demo indisponível: projeto interno/cliente (prints abaixo)."}
                 </p>
               </div>
 
@@ -161,43 +244,95 @@ export const Projects = () => {
               </button>
             </div>
 
-            <div className="relative aspect-[16/9] bg-black">
-              {open.screenshots?.[slide] && (
+            <div
+              className="bg-black w-full max-h-[60vh] sm:max-h-[70vh] overflow-auto overscroll-contain"
+              style={{ WebkitOverflowScrolling: "touch" }}
+              onWheel={(e) => {
+                if (!e.ctrlKey) return;
+
+                e.preventDefault();
+                const delta = e.deltaY > 0 ? -0.15 : 0.15;
+                setZoom((z) => Math.min(Math.max(1, +(z + delta).toFixed(2)), 4));
+              }}
+            >
+              {open.screenshots?.[slide]?.src && (
                 <img
-                  src={open.screenshots[slide]}
-                  alt={`Screenshot ${slide + 1}`}
-                  className="object-contain"
+                  src={open.screenshots[slide].src}
+                  alt={open.screenshots[slide].caption}
+                  draggable={false}
+                  onClick={() => setZoom((z) => (z === 1 ? 2 : 1))}
+                  className="block h-auto select-none cursor-zoom-in"
+                  style={{
+                    width: `${zoom * 100}%`,
+                    maxWidth: "none",
+                  }}
                 />
               )}
 
-              {open.screenshots && open.screenshots.length > 1 && (
-                <>
-                  <button
-                    onClick={prev}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/40 hover:bg-black/60"
-                  >
-                    <ChevronLeft className="w-5 h-5" />
-                  </button>
-                  <button
-                    onClick={next}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/40 hover:bg-black/60"
-                  >
-                    <ChevronRight className="w-5 h-5" />
-                  </button>
-                </>
-              )}
+              <div className="sticky bottom-2 mx-auto w-fit px-3 py-1 text-[11px] rounded bg-black/60 text-white/80">
+                Scroll para navegar • Clique para zoom • Ctrl + scroll para zoom fino
+              </div>
             </div>
 
-            <div className="p-4 flex items-center justify-between text-xs text-muted-foreground">
-              <span>
-                {slide + 1} / {open.screenshots?.length ?? 0}
-              </span>
-              <div className="flex gap-2">
-                {open.tags.slice(0, 4).map((t) => (
-                  <span key={t} className="px-2 py-1 rounded-md bg-secondary/60">
-                    {t}
-                  </span>
-                ))}
+            <div className="p-3 sm:p-4 flex items-center justify-between text-xs text-muted-foreground">
+              <div className="flex items-center gap-2">
+                {open.screenshots && open.screenshots.length > 1 && (
+                  <button
+                    onClick={() => {
+                      setSlide((s) => (s - 1 + open.screenshots!.length) % open.screenshots!.length);
+                      setZoom(1);
+                    }}
+                    className="p-2 rounded-lg hover:bg-white/5 transition"
+                    aria-label="Anterior"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                )}
+
+                <span className="min-w-[54px] text-center tabular-nums">
+                  {slide + 1} / {open.screenshots?.length ?? 0}
+                </span>
+
+                {open.screenshots && open.screenshots.length > 1 && (
+                  <button
+                    onClick={() => {
+                      setSlide((s) => (s + 1) % open.screenshots!.length);
+                      setZoom(1);
+                    }}
+                    className="p-2 rounded-lg hover:bg-white/5 transition"
+                    aria-label="Próximo"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+
+              <div className="flex items-center gap-3">
+                <p className="hidden sm:block text-green-400 max-w-xs leading-snug">
+                  {open.screenshots?.[slide]?.caption}
+                </p>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setZoom((z) => Math.max(1, +(z - 0.25).toFixed(2)))}
+                    className="px-2 py-1 rounded-lg hover:bg-white/5"
+                  >
+                    −
+                  </button>
+
+                  <span className="w-12 text-center tabular-nums">{Math.round(zoom * 100)}%</span>
+
+                  <button
+                    onClick={() => setZoom((z) => Math.min(4, +(z + 0.25).toFixed(2)))}
+                    className="px-2 py-1 rounded-lg hover:bg-white/5"
+                  >
+                    +
+                  </button>
+
+                  <button onClick={() => setZoom(1)} className="px-2 py-1 rounded-lg hover:bg-white/5">
+                    Reset
+                  </button>
+                </div>
               </div>
             </div>
           </div>
