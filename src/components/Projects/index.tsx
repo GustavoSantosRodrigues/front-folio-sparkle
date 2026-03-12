@@ -32,7 +32,7 @@ const projects: Project[] = [
     title: "Base3 — Site de Cases (Laravel → Next.js)",
     description:
       "Migração de um site institucional de cases de marketing desenvolvido em Laravel para Next.js, mantendo o layout original e reorganizando a aplicação com componentização, rotas modernas e otimizações de performance.",
-    demoUrl: "https://corporate-site-nextjs-two.vercel.app",
+    demoUrl: "https://base3.gustavodevsr.xyz/",
     repoUrl: "https://github.com/GustavoSantosRodrigues/corporate-site-nextjs",
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "App Router"],
     status: "done",
@@ -70,6 +70,8 @@ const projects: Project[] = [
     description:
       "Aplicação full-stack moderna em desenvolvimento para gestão de treinos personalizados, construída do zero ao deploy utilizando Node.js, Fastify, TypeScript, Next.js e Docker. O sistema incluirá onboarding com IA, criação de planos de treino, monitoramento de progresso e dashboard de resultados.",
     isRepoPrivate: true,
+    demoUrl: "https://app.gustavodevsr.xyz/",
+    repoUrl: "https://github.com/GustavoSantosRodrigues/front-end-gestao-treinos",
     tags: ["Node.js", "Fastify", "TypeScript", "Next.js", "Docker", "Full-stack"],
     status: "dev",
     statusText: "Em desenvolvimento (MVP)",
