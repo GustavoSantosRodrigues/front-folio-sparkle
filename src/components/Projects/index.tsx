@@ -69,11 +69,9 @@ const projects: Project[] = [
     title: "Sistema de Gestão de Treinos — Full-stack (Node.js + Next.js)",
     description:
       "Aplicação full-stack moderna em desenvolvimento para gestão de treinos personalizados, construída do zero ao deploy utilizando Node.js, Fastify, TypeScript, Next.js e Docker. O sistema incluirá onboarding com IA, criação de planos de treino, monitoramento de progresso e dashboard de resultados.",
-    isRepoPrivate: true,
     demoUrl: "https://app.gustavodevsr.xyz/",
     repoUrl: "https://github.com/GustavoSantosRodrigues/front-end-gestao-treinos",
     tags: ["Node.js", "Fastify", "TypeScript", "Next.js", "Docker", "Full-stack"],
-    status: "dev",
     statusText: "Em desenvolvimento (MVP)",
 
     screenshots: [
