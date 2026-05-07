@@ -10,7 +10,7 @@ const links = [
         label: "WhatsApp",
     },
     {
-        href: "https://www.linkedin.com/in/gustavo-santos-rodrigues-55a13a201/",
+        href: "https://www.linkedin.com/in/gustavo-rodrigues-55a13a201/",
         icon: Linkedin,
         label: "LinkedIn",
     },

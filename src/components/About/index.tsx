@@ -22,6 +22,17 @@ const techGroups: TechGroup[] = [
     ],
   },
   {
+    title: "IA & Automação",
+    items: [
+      { name: "LLMs", icon: "🤖" },
+      { name: "Prompt Engineering", icon: "✍️" },
+      { name: "MCPs", icon: "⚙️" },
+      { name: "OpenAI / AI SDK", icon: "🌐" },
+      { name: "Context Engineering", icon: "🧠" },
+      { name: "Agentes IA", icon: "🤖" },
+    ],
+  },
+  {
     title: "Mobile",
     items: [{ name: "React Native", icon: "📱" }],
   },

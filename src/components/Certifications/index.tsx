@@ -13,11 +13,11 @@ type Certification = {
 };
 
 const certifications: Certification[] = [
+
   {
-    title: "React Native com Expo",
-    institution: "Rocketseat",
-    date: "Mai 2025",
-    status: "Concluído",
+    title: "Formação IA para Devs — Full Stack Club",
+    institution: "Em andamento",
+    status: "Em andamento",
     highlight: true,
   },
   {
@@ -27,26 +27,38 @@ const certifications: Certification[] = [
     status: "Concluído",
     highlight: true,
   },
+
+  {
+    title: "Bootcamp Sistema de Gestão de treinos com IA",
+    institution: "Full Stack Club",
+    status: "Concluído",
+    date: "Marc 2026",
+    highlight: true,
+  },
+  {
+    title: "React Native com Expo",
+    institution: "Rocketseat",
+    date: "Mai 2025",
+    status: "Concluído",
+    highlight: true,
+  },
   {
     title: "GitHub Certification",
     institution: "DIO",
     date: "Jan 2026",
     status: "Concluído",
-    highlight: true,
+    highlight: false,
   },
   {
     title: "CI/CD com GitLab",
     institution: "DIO",
     date: "Jan 2026",
     status: "Concluído",
-    highlight: true,
-  },
-  {
-    title: "Potência Tech Angular Developer",
-    institution: "Powered by iFood • DIO",
-    status: "Em andamento",
+    highlight: false,
   },
 ];
+
+
 
 export const Certifications = () => {
   const [showAll, setShowAll] = useState(false);
@@ -72,7 +84,7 @@ export const Certifications = () => {
           >
             <div>
               <h2 className="font-heading text-3xl md:text-4xl font-bold">
-                Formação & Certificações
+                Cursos & Certificações
               </h2>
               <p className="text-sm text-muted-foreground mt-2">
                 Listo apenas os certificados mais relevantes para a vaga.
@@ -110,11 +122,10 @@ export const Certifications = () => {
 
                   {cert.status && (
                     <span
-                      className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium ${
-                        cert.status === "Concluído"
-                          ? "bg-green-500/20 text-green-400"
-                          : "bg-yellow-500/20 text-yellow-400"
-                      }`}
+                      className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium ${cert.status === "Concluído"
+                        ? "bg-green-500/20 text-green-400"
+                        : "bg-yellow-500/20 text-yellow-400"
+                        }`}
                     >
                       {cert.status}
                     </span>

@@ -42,7 +42,7 @@ export const Hero = () => {
                     transition={{ duration: 0.6, delay: 0.4 }}
                     className="text-sm md:text-base text-primary font-medium mb-6"
                 >
-                    +2 anos de experiência • Sistemas reais em produção
+                    +3 anos de experiência • Sistemas reais em produção
                 </motion.p>
 
                 <motion.p
@@ -51,7 +51,7 @@ export const Hero = () => {
                     transition={{ duration: 0.6, delay: 0.4 }}
                     className="text-sm md:text-base text-white text-muted-foreground mb-3 leading-relaxed"
                 >
-                    Plus: Laravel • Filament • MySQL • APIs REST
+                    Stack complementar: Laravel • Filament • MySQL • APIs REST
                 </motion.p>
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
@@ -59,7 +59,7 @@ export const Hero = () => {
                     transition={{ duration: 0.6, delay: 0.4 }}
                     className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 leading-relaxed"
                 >
-                    Crio interfaces modernas e funcionais com foco em performance e organização de código.
+                    Desenvolvimento de aplicações web responsivas, performáticas e bem estruturadas, com foco em usabilidade, integração com APIs e manutenção a longo prazo.
                 </motion.p>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
