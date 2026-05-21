@@ -33,7 +33,7 @@ export const Hero = () => {
                     transition={{ duration: 0.6, delay: 0.3 }}
                     className="text-lg md:text-xl text-muted-foreground mb-2"
                 >
-                    Front-end Developer • React • Next.js • TypeScript
+                    Front-end Developer • React • Next.js • TypeScript • Wordpress 
                 </motion.p>
 
                 <motion.p
@@ -51,7 +51,7 @@ export const Hero = () => {
                     transition={{ duration: 0.6, delay: 0.4 }}
                     className="text-sm md:text-base text-white text-muted-foreground mb-3 leading-relaxed"
                 >
-                    Stack complementar: Laravel • Filament • MySQL • APIs REST
+                    Stack complementar: Laravel • Filament • MySQL • APIs REST • PHP
                 </motion.p>
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}

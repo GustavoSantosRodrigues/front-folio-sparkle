@@ -38,6 +38,14 @@ const projects: Project[] = [
     status: "done",
   },
   {
+    title: "Site institucional Arkos (WordPress)",
+    description:
+      "Desenvolvimento e manutenção de site institucional em WordPress, com customização de páginas, responsividade, SEO técnico e uso de ACF (Advanced Custom Fields) para criação de áreas dinâmicas e gestão flexível de conteúdo.",
+    demoUrl: "https://homologacao.gustavodevsr.xyz/",
+    tags: ["WordPress", "PHP", "ACF", "SEO", "Responsividade"],
+    status: "done",
+  },
+  {
     title:
       "Sistema web completo desenvolvido com Laravel e painel administrativo em Filament",
     description:

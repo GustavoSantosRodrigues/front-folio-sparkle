@@ -39,7 +39,7 @@ export const Contact = () => {
                 >
                     <motion.p variants={fadeUp} custom={0} className="font-heading text-primary text-sm mb-2 tracking-wider"></motion.p>
                     <motion.h2 variants={fadeUp} custom={1} className="font-heading text-3xl font-bold mb-4">
-                        Desenvolvedor Front-end aberto a oportunidades para atuar em aplicações web modernas com <span className="text-primary">React</span>, <span className="text-primary">Next.js</span> e <span className="text-primary">TypeScript</span>.
+                        Desenvolvedor Front-end aberto a oportunidades para atuar em aplicações web modernas com <span className="text-primary">React</span>, <span className="text-primary">Next.js</span>, <span className="text-primary">TypeScript</span>, <span className="text-primary">AI</span> e <span className="text-primary">WordPress</span>.
                     </motion.h2>
                     <motion.p variants={fadeUp} custom={2} className="text-muted-foreground mb-10  leading-relaxed">
                         Atualmente aberto a oportunidades como Desenvolvedor Front-End.

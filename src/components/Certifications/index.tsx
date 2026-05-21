@@ -16,8 +16,9 @@ const certifications: Certification[] = [
 
   {
     title: "Formação IA para Devs — Full Stack Club",
-    institution: "Em andamento",
-    status: "Em andamento",
+    institution: "Full Stack Club",
+    status: "Concluído",
+    date: "Maio2026",
     highlight: true,
   },
   {
@@ -27,7 +28,13 @@ const certifications: Certification[] = [
     status: "Concluído",
     highlight: true,
   },
-
+  {
+    title: "Formação Next.js — Full Stack Club (Em andamento)",
+    institution: "Em andamento",
+    status: "Em andamento",
+    // date: "Maio2026",
+    highlight: true,
+  },
   {
     title: "Bootcamp Sistema de Gestão de treinos com IA",
     institution: "Full Stack Club",

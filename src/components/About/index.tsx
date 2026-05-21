@@ -33,6 +33,14 @@ const techGroups: TechGroup[] = [
     ],
   },
   {
+    title: "CMS & Outros:",
+    items: [
+      { name: "WordPress", icon: "🌐" },
+      { name: "ACF", icon: "🔧" },
+      { name: "SEO", icon: "🔍" },
+    ],
+  },
+  {
     title: "Mobile",
     items: [{ name: "React Native", icon: "📱" }],
   },
